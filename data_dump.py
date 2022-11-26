@@ -14,6 +14,7 @@ if __name__ == '__main__':
     df= pd.read_csv(DATA_FILE_PATH)
     print(f'Rows and Columns :{df.shape}')
 
+    
     #convert dataframe to json so that we can dump these records in the mongo db
     df.reset_index(drop=True,inplace=True)
 
@@ -23,4 +24,3 @@ if __name__ == '__main__':
 
     #insert converted json record to mongo db
     client[DATABASE_NAME][COLLECTION_NAME].insert_many(json_record)
-    
